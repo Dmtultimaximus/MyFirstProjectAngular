@@ -1,0 +1,35 @@
+ul{
+    display:flex;
+    flex-direction: column-reverse;
+}
+.my-btn{
+    padding: 0;
+}
+.redact-icon{
+    font-size: 12px;
+}
+.redact{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.btn-add{
+    width: 99%;
+    margin-bottom: 5px;
+}
+.tags{
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: small;
+    font-style: italic;
+}
+.imageNews{
+    width: 80%;
+}
+.imageCompany{
+    width: 80%;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+.cardNews{
+    padding: 0;
+}

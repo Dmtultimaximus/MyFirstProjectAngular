@@ -1,0 +1,72 @@
+<h3 class="company">Мои компании</h3>
+<mat-form-field>
+    <mat-label>Фильтр</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="поиск">
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+    <form >
+    <table mat-table [dataSource]="dataSource" matSort >
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef > </th>
+        <td mat-cell *matCellDef="let row">
+          <div>
+                     <button class="btn btn-success" (click)='redactCompany(row._id,
+                                                                row.nameCompany, 
+                                                                row.tegsCompany, 
+                                                                row.aboutCompany, 
+                                                                row.donateGoal,
+                                                                row.dateEnd,
+                                                                row.srcVideo)'>изменить</button>
+          
+          <button class="btn btn-success ml-1"  (click)='GotoCompany(row._id)'>К</button>
+          </div>
+
+         
+        </td>
+      </ng-container>
+
+        <!-- Name Column -->
+      <ng-container matColumnDef="nameCompany">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Имя компании </th>
+        <td mat-cell *matCellDef="let row"> 
+          {{row.nameCompany}}
+        </td>
+        
+      </ng-container>
+      
+        <!-- tags Column -->
+        <ng-container matColumnDef="tegsCompany">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Теги компании </th>
+            <td mat-cell *matCellDef="let row"> {{row.tegsCompany}} </td>
+        </ng-container>
+
+
+      <!-- aboutCompany Column -->
+      <ng-container matColumnDef="aboutCompany">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> О компании </th>
+        <td mat-cell *matCellDef="let row"> {{row.aboutCompany}} </td>
+      </ng-container>      
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="parentDonat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Сборы </th>
+        <td mat-cell *matCellDef="let row"> {{row.parentDonat}}/{{row.donateGoal}} </td>
+      </ng-container>
+
+      <!-- end company Column -->
+      <ng-container matColumnDef="dateEnd">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Окончание </th>
+        <td mat-cell *matCellDef="let row" > {{row.dateEnd}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+
+    </form>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>

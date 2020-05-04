@@ -1,0 +1,12 @@
+<p>company-redact works!</p>
+<form (submit)="userCompanyRedactClick()">
+    <input type="text" [(ngModel)]="nameCompany" name="nameCompany" placeholder="введите название компании" class="form-control"><br>
+    <input type="text" [(ngModel)]="tegsCompany" name="tegsCompany" placeholder="введите теги" class="form-control"><br>
+    <input type="text" [(ngModel)]="aboutCompany" name="aboutCompany" placeholder="описание компании" class="form-control"><br>
+    <input type="text" [(ngModel)]="donateGoal" name="donateGoal" placeholder="цель сбора" class="form-control"><br>
+    <input type="text" [(ngModel)]="srcVideo" name="srcVideo" placeholder="ссылка на видео" class="form-control"><br>
+    
+    <input type="date" [(ngModel)]="dateEnd" name="dateEnd" placeholder="дата окончания сбора" class="form-control"><br>
+    <button class="btn btn-success" type="submit" >Сохранить</button>
+</form>
+<button class="btn btn-success" type="submit" (click)="userCompanyDelete()">Удалить</button>

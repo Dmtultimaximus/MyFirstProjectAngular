@@ -1,0 +1,44 @@
+
+<div class="jumbotron">
+  <div class="dataUser">
+    <div>Ваше имя: <span>{{nameUser}}</span></div>
+    <div>Ваше email: <span>{{emailUser}}</span></div>
+    <div>Ваше логин: <span>{{loginUser}}</span></div>
+  </div>
+
+    <h1>Кабинет пользователя</h1>
+    <div>
+      <button class="btn btn-success" (click)=visibleCompany() [ngClass]="{invisible: triger}">Список компаний</button>
+      <button class="btn btn-success" (click)=visibleCreateCompany() [ngClass]="{invisible: !triger}">Создать компанию</button>
+      <!-- <button class="btn btn-success" [routerLink]="['/about']" >компании</button> -->
+    </div>
+    
+    <div [ngClass]="{invisible: triger}">
+      <form (submit)="userCompanyClick()" [ngClass]="{invisible: !visibility}">
+          <input type="text" [(ngModel)]="nameCompany" name="nameCompany" placeholder="введите название компании" class="form-control"><br>
+          <input type="text" [(ngModel)]="tegsCompany" name="tegsCompany" placeholder="введите теги" class="form-control"><br>
+          <input type="text" [(ngModel)]="srcVideo" name="srcVideo" placeholder="ссылка для видео" class="form-control"><br>
+          <!-- <input type="area" [(ngModel)]="aboutCompany" name="aboutCompany" placeholder="описание компании" class="form-control"><br> -->
+          <textarea [(ngModel)]="aboutCompany" placeholder="описание компании" class="form-control" name="aboutCompany" id="" cols="30" rows="5"></textarea>
+          <input type="number" [(ngModel)]="donateGoal" name="donateGoal" placeholder="цель сбора" class="form-control"><br>
+          <input type="date" [(ngModel)]="dateEnd" name="dateEnd" placeholder="дата окончания сбора" class="form-control"><br>
+          <input type="file" (change)="LoadFile($event)">
+          <img src="{{image}}" alt="" height="100px">
+          <button class="btn btn-success" type="submit">Опубликовать</button>
+      </form>
+      <form (submit)="userBonusClick()" [ngClass]="{invisible: visibility}">
+        <input type="text" [(ngModel)]="nameBonus" name="nameBonus" placeholder="Название бонуса" class="form-control">
+        <input type="number" [(ngModel)]="priceBonus" name="priceBonus" placeholder="Цена Бонуса" class="form-control"><br>
+        <button class="btn btn-success" type="submit">Опубликовать</button>
+      </form>
+    </div>
+    <div class="" [ngClass]="{invisible: !triger}">
+      <app-my-company></app-my-company>
+      <app-my-bonus></app-my-bonus> 
+    </div>
+    
+</div>
+
+
+
+

@@ -1,0 +1,24 @@
+<h2>Редактирование новости</h2>
+<div class="position-relative overflow-hidden  m-md-3 text-center bg-light row" >
+
+    <form (submit)="userClick()" class="col-12">
+    <img src="" alt="">
+    <mat-form-field appearance="fill">
+      <mat-label>Заголовок</mat-label>
+      <input matInput [value]="titleNews" [(ngModel)]="titleNews" name="titleNews">
+    </mat-form-field>
+    <br>
+    <mat-form-field  appearance="fill">
+      <mat-label>Статья</mat-label>
+      <textarea matInput [value]='textNews' [(ngModel)]="textNews" name="textNews"></textarea>
+    </mat-form-field>
+    <div>
+      <button type='submit' class="btn btn-success"> Отправить</button>
+    </div>
+    </form>
+    <br>
+    <div>
+      <button (click)='deleteNews()' class="btn btn-danger"> Удалить новость</button>
+    </div>
+    
+</div>

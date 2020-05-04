@@ -1,0 +1,33 @@
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-10 p-lg-5 mx-auto my-5">
+
+      <ul class="list-unstyled">
+        <li *ngFor="let UserCompany of AllCompany" class="card" >
+          <!-- <p>{{UserCompany?.nameCompany}}</p>
+          <p>{{UserCompany?.tegsCompany}}</p> -->
+          <div class="card-body">
+        
+            <img class="imageCompany" src="{{UserCompany.image}}" alt="">
+            <h2>{{UserCompany?.nameCompany}}</h2>
+            <p class="tags">{{UserCompany?.tegsCompany}}</p>
+    
+          </div>
+          <div class="card-footer">
+            <p>{{UserCompany?.aboutCompany}}</p>
+          </div>
+          <div>
+            <p>Текущие сборы: {{UserCompany?.parentDonat}}/{{UserCompany?.donateGoal}}</p>
+          </div>
+          
+          <a  class="btn btn-outline-primary" [routerLink]="['/about']" (click)=aboutCompany(UserCompany?._id)>Подробнее</a>
+        </li>
+      </ul>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
+
+
+
+
+

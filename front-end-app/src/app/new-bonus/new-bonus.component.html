@@ -1,0 +1,8 @@
+<h2>Создание бонуса</h2>
+<div>
+    <form (submit)="addCompanyBonus()" >
+        <input type="text" [(ngModel)]="nameBonus" name="nameBonus" placeholder="Название бонуса" class="form-control">
+        <input type="text" [(ngModel)]="priceBonus" name="priceBonus" placeholder="Цена Бонуса" class="form-control"><br>
+        <button class="btn btn-success" type="submit">Добавить</button>
+      </form>
+</div>

@@ -1,0 +1,14 @@
+<h2>Создание новости</h2>
+<div>
+    <form (submit)="addCompanyNews()">
+          <input type="text" [(ngModel)]="titleNews" name="titleNews" placeholder="Введите заголовок новости" class="form-control"><br>
+          <textarea type="text" [(ngModel)]="textNews" name="textNews" placeholder="Текст новости" class="form-control" id="" cols="30" rows="10"></textarea>
+          <input class="mt-3" type="file" (change)="LoadFile($event)" >
+          <img src="{{Image}}" alt="" height="100px">
+          
+               <button class="btn btn-success d-flex mt-3" type="submit">Опубликовать новость</button>
+          
+         
+    </form> 
+</div>
+

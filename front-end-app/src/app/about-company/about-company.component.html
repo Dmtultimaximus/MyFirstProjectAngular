@@ -1,0 +1,114 @@
+<div class="position-relative overflow-hidden  m-md-3 text-center bg-light row">
+  <div class="col-lg-3  col-md-12 ">
+    <h3 class="mt-3">Бонусы</h3>
+
+    <div *ngIf="chekDataOwner">
+      <button class="btn btn-success btn-add"  [routerLink]="['/newBonus']" *ngIf="authService.isLoggedIn()" >Добавить бонус</button>
+    </div>
+    
+    <ul class="list-unstyled ">
+      <li *ngFor="let BonusCompany of thisCompanyBonus"  >
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header">
+            <div *ngIf="chekDataOwner" class="redact">
+              <button class="btn btn-light my-btn"  [routerLink]="['/redactBonus']" (click)="addDataAndRedactBonus(BonusCompany._id, BonusCompany.nameBonus, BonusCompany.priceBonus )" *ngIf="authService.isLoggedIn()" >
+                <i class="material-icons redact-icon">create</i>
+              </button>
+            </div>
+            <h4 class="my-0 font-weight-normal">{{BonusCompany?.nameBonus}}</h4>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title pricing-card-title">${{BonusCompany?.priceBonus}}</h4>
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary" (click)="addData(BonusCompany.idCompany, BonusCompany.nameBonus, BonusCompany.priceBonus)" [routerLink]="['/addDonate']">Поддержать</button>
+          </div>
+        </div>
+        
+      </li>           
+    </ul> 
+
+
+
+  </div>
+  <div class="col-lg-6 col-md-12 card ">
+      <ul class="list-unstyled ">
+        <li *ngFor="let UserCompany of aboutCompany"  class="card">
+          <div class="card-body">
+            
+            <img class="imageCompany" src="{{UserCompany.image}}" alt="">
+            <h2>{{UserCompany?.nameCompany}}</h2>
+            <p class="tags">{{UserCompany?.tegsCompany}}</p>
+
+          </div>
+          <div class="card-title">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" [src]="safeURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               
+            </div>
+            <br>
+            <p>{{UserCompany?.aboutCompany}}</p>
+          </div>
+          <div class="card-footer"  >
+              
+              <p>Текущие сборы: {{UserCompany?.parentDonat}}/{{UserCompany?.donateGoal}}</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  [ngStyle]="{width: progressBar}">{{progressBar}}</div>
+              </div>
+              <p>Оценка: {{userScore}}</p>
+                        <div >
+            <div *ngIf="chekData" [ngClass]="{invisible: trigger}">
+              <div class="stars" *ngIf="authService.isLoggedIn()" >
+                <a  (click)="addScore(UserCompany._id, 5)"><i class="material-icons">
+                  filter_5
+                  </i></a>
+                <a  (click)="addScore(UserCompany._id, 4)"><i class="material-icons">
+                  filter_4
+                  </i></a>
+                <a  (click)="addScore(UserCompany._id, 3)"><i class="material-icons">
+                  filter_3
+                  </i></a>
+                <a  (click)="addScore(UserCompany._id, 2)"><i class="material-icons">
+                  filter_2
+                  </i></a>
+                <a  (click)="addScore(UserCompany._id, 1)"><i class="material-icons">
+                  filter_1
+                  </i></a>
+              </div>
+            </div>
+          </div>
+          </div>
+
+        </li>
+      </ul>
+  </div>
+  <div class="col-lg-3 col-md-12  ">
+    <h2 class="mt-3">Новости</h2>
+    <div *ngIf="chekDataOwner">
+      <button class="btn btn-success btn-add" [routerLink]="['/newNews']" *ngIf="authService.isLoggedIn()">Добавить новость</button>
+    </div>
+    
+    <ul class="list-unstyled ">
+      <li *ngFor="let new of dataNews"  >
+
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <!-- <a style="cursor: pointer;" (click)="addDataAndRedact(new._id, new.titleNews, new.textNews )" [routerLink]="['/redactNews']" >редактировать</a> -->
+              <div *ngIf="chekDataOwner">
+                <button class="btn btn-light my-btn redact"  (click)="addDataAndRedact(new._id, new.titleNews, new.textNews )" [routerLink]="['/redactNews']" *ngIf="authService.isLoggedIn()" >
+                  <i class="material-icons redact-icon">create</i>
+                </button>              
+              </div>
+              <img class="imageNews" src="{{new.image}}" alt="">
+              <h4 class="my-0 font-weight-normal">{{new?.titleNews}}</h4>
+            </div>
+            <div class="card-body cardNews">
+              <p>{{new?.textNews}}</p>
+              <button type="button" class="btn btn-lg btn-block btn-primary" (click)="addDataForMore(new.image, new.titleNews, new.textNews)">Подробнее</button>
+            </div>
+          </div>
+
+      </li>
+    </ul>
+  </div>
+
+</div>
+
